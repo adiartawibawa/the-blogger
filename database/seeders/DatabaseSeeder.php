@@ -39,18 +39,14 @@ class DatabaseSeeder extends Seeder
         $technologiesData = [
             ['name' => 'PHP', 'category' => 'language', 'color' => '#777BB4', 'proficiency' => 90, 'is_featured' => true],
             ['name' => 'JavaScript', 'category' => 'language', 'color' => '#F7DF1E', 'proficiency' => 85, 'is_featured' => true],
-            ['name' => 'TypeScript', 'category' => 'language', 'color' => '#3178C6', 'proficiency' => 80, 'is_featured' => true],
-            ['name' => 'Python', 'category' => 'language', 'color' => '#3776AB', 'proficiency' => 70, 'is_featured' => false],
             ['name' => 'Laravel', 'category' => 'framework', 'color' => '#FF2D20', 'proficiency' => 92, 'is_featured' => true],
             ['name' => 'Vue.js', 'category' => 'framework', 'color' => '#4FC08D', 'proficiency' => 85, 'is_featured' => true],
-            ['name' => 'React', 'category' => 'framework', 'color' => '#61DAFB', 'proficiency' => 75, 'is_featured' => true],
             ['name' => 'Tailwind CSS', 'category' => 'framework', 'color' => '#06B6D4', 'proficiency' => 95, 'is_featured' => true],
             ['name' => 'MySQL', 'category' => 'database', 'color' => '#4479A1', 'proficiency' => 88, 'is_featured' => true],
             ['name' => 'PostgreSQL', 'category' => 'database', 'color' => '#336791', 'proficiency' => 75, 'is_featured' => false],
-            ['name' => 'Redis', 'category' => 'database', 'color' => '#DC382D', 'proficiency' => 70, 'is_featured' => false],
-            ['name' => 'Docker', 'category' => 'devops', 'color' => '#2496ED', 'proficiency' => 78, 'is_featured' => true],
-            ['name' => 'Git', 'category' => 'tool', 'color' => '#F05032', 'proficiency' => 92, 'is_featured' => true],
-            ['name' => 'Filament', 'category' => 'framework', 'color' => '#EFA032', 'proficiency' => 90, 'is_featured' => true],
+            ['name' => 'Docker', 'category' => 'devops', 'color' => '#2496ED', 'proficiency' => 70, 'is_featured' => true],
+            ['name' => 'Git', 'category' => 'tool', 'color' => '#F05032', 'proficiency' => 90, 'is_featured' => true],
+            ['name' => 'Unity', 'category' => 'Game Engine', 'color' => '#222C37', 'proficiency' => 95, 'is_featured' => true],
         ];
 
         $technologies = [];
@@ -170,25 +166,25 @@ class DatabaseSeeder extends Seeder
         $settingsData = [
             'experiences' => json_encode([
                 [
-                    'role' => 'Senior Full Stack Developer',
-                    'company' => 'Tech Company Inc.',
-                    'period' => '2022 — Present',
-                    'description' => 'Leading development of microservices architecture and mentoring junior developers.',
-                    'technologies' => ['Laravel', 'Vue.js', 'Docker', 'PostgreSQL'],
+                    'role' => 'IT Consultant (Geographic Information System)',
+                    'company' => 'Dinas Pekerjaan Umum dan Penataan Ruang (PUPR)',
+                    'period' => '2013 — 2019',
+                    'description' => 'Bertanggung jawab dalam perancangan dan implementasi infrastruktur data spasial serta pengembangan sistem informasi geografis untuk mendukung efisiensi tata ruang daerah.',
+                    'technologies' => ['ArcGIS', 'QGIS', 'PostGIS', 'Web GIS', 'Spatial Analysis'],
                 ],
                 [
-                    'role' => 'Full Stack Developer',
-                    'company' => 'Digital Agency',
-                    'period' => '2020 — 2022',
-                    'description' => 'Developed and maintained multiple client projects using modern web technologies.',
-                    'technologies' => ['Laravel', 'React', 'MySQL', 'Redis'],
+                    'role' => 'Vocational Educator (Network Engineering)',
+                    'company' => 'Vocational High School (SMK)',
+                    'period' => '2019 — Present',
+                    'description' => 'Mendidik dan melatih talenta muda dalam kompetensi infrastruktur jaringan, administrasi server, dan keamanan siber sesuai dengan standar industri terkini.',
+                    'technologies' => ['MikroTik', 'Cisco CCNA', 'Linux Administration', 'Network Security', 'Virtualization'],
                 ],
                 [
-                    'role' => 'Junior Developer',
-                    'company' => 'Startup',
-                    'period' => '2018 — 2020',
-                    'description' => 'Started my professional journey building web applications from scratch.',
-                    'technologies' => ['PHP', 'JavaScript', 'MySQL'],
+                    'role' => 'Senior Full Stack Web Developer (Freelance)',
+                    'company' => 'Self-Employed',
+                    'period' => '2013 — Present',
+                    'description' => 'Menyediakan solusi digital end-to-end bagi berbagai klien, mulai dari pengembangan arsitektur web yang skalabel hingga optimalisasi sistem manajemen basis data.',
+                    'technologies' => ['Laravel', 'Vue.js', 'RESTful API', 'MySQL', 'Cloud Hosting'],
                 ],
             ]),
         ];
