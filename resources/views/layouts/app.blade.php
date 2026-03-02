@@ -1,6 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
-    :class="{ 'dark': darkMode }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))">
+<script>
+    if (localStorage.getItem('darkMode') === 'true' ||
+        (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" x-data="{
+    darkMode: localStorage.getItem('darkMode') === 'true',
+    toggleDarkMode() {
+        this.darkMode = !this.darkMode;
+        localStorage.setItem('darkMode', this.darkMode);
+        if (this.darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }
+}"
+    :class="{ 'dark': darkMode }">
 
 <head>
     <meta charset="utf-8">
@@ -30,7 +49,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
 
     {{-- Styles --}}
@@ -54,8 +73,7 @@
 </head>
 
 <body
-    class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-sans antialiased transition-colors duration-300"
-    x-data="">
+    class="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 font-sans antialiased transition-colors duration-300">
 
     {{-- Noise Texture Overlay --}}
     <div class="fixed inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] z-0"

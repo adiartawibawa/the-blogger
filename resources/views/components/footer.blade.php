@@ -1,4 +1,4 @@
-<footer class="bg-stone-100 dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 mt-24">
+<footer class="bg-stone-100 dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 mt-24 bg-pattern">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {{-- Brand --}}

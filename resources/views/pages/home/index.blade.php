@@ -5,7 +5,7 @@
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section class="relative min-h-screen flex items-center pt-16 overflow-hidden bg-pattern">
         {{-- Background decorations --}}
         <div
             class="absolute top-1/4 -right-32 w-96 h-96 bg-indigo-200/30 dark:bg-indigo-900/20 rounded-full blur-3xl pointer-events-none">
@@ -84,62 +84,89 @@
 
                 {{-- Code Card --}}
                 <div class="relative hidden lg:block">
-                    <div class="relative bg-stone-900 rounded-2xl overflow-hidden shadow-2xl border border-stone-700/50">
-                        <div class="flex items-center gap-2 px-4 py-3 bg-stone-800 border-b border-stone-700">
+                    {{-- Main Code Card --}}
+                    <div
+                        class="relative bg-white dark:bg-stone-900 rounded-2xl overflow-hidden shadow-2xl border border-stone-200 dark:border-stone-700/50 transition-colors duration-300">
+                        {{-- Terminal Header --}}
+                        <div
+                            class="flex items-center gap-2 px-4 py-3 bg-stone-50 dark:bg-stone-800 border-b border-stone-200 dark:border-stone-700 transition-colors duration-300">
                             <div class="flex gap-1.5">
                                 <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                             </div>
-                            <span class="font-mono text-xs text-stone-400 ml-2">profile.ts</span>
+                            <span class="font-mono text-xs text-stone-500 dark:text-stone-400 ml-2">profile.ts</span>
                         </div>
-                        <div class="p-6 font-mono text-sm">
+
+                        {{-- Code Content --}}
+                        <div class="p-6 font-mono text-sm transition-colors duration-300">
                             <div class="space-y-1 leading-relaxed">
-                                <div><span class="text-violet-400">const</span> <span class="text-blue-300">developer</span>
-                                    <span class="text-stone-400">=</span> <span class="text-yellow-300">{</span>
+                                <div>
+                                    <span class="text-violet-600 dark:text-violet-400">const</span>
+                                    <span class="text-blue-600 dark:text-blue-300">developer</span>
+                                    <span class="text-stone-500 dark:text-stone-400">=</span>
+                                    <span class="text-yellow-600 dark:text-yellow-300">{</span>
                                 </div>
                                 <div class="ml-4">
-                                    <span class="text-green-400">name</span>
-                                    <span class="text-stone-400">:</span>
-                                    <span class="text-amber-300">"{{ config('portfolio.owner_name', 'Your Name') }}"</span>
-                                    <span class="text-stone-400">,</span>
-                                </div>
-                                <div class="ml-4">
-                                    <span class="text-green-400">role</span>
-                                    <span class="text-stone-400">:</span>
+                                    <span class="text-green-600 dark:text-green-400">name</span>
+                                    <span class="text-stone-500 dark:text-stone-400">:</span>
                                     <span
-                                        class="text-amber-300">"{{ config('portfolio.owner_title', 'Full Stack Developer') }}"</span>
-                                    <span class="text-stone-400">,</span>
+                                        class="text-amber-600 dark:text-amber-300">"{{ config('portfolio.owner_name', 'Your Name') }}"</span>
+                                    <span class="text-stone-500 dark:text-stone-400">,</span>
                                 </div>
-                                <div class="ml-4"><span class="text-green-400">passion</span><span
-                                        class="text-stone-400">:</span> <span class="text-amber-300">"Building great
-                                        things"</span><span class="text-stone-400">,</span></div>
-                                <div class="ml-4"><span class="text-green-400">skills</span><span class="text-stone-400">:
-                                        [</span></div>
-                                <div class="ml-8"><span class="text-amber-300">"Laravel"</span><span
-                                        class="text-stone-400">,</span> <span class="text-amber-300">"Vue.js"</span><span
-                                        class="text-stone-400">,</span></div>
-                                <div class="ml-8"><span class="text-amber-300">"TypeScript"</span><span
-                                        class="text-stone-400">,</span> <span class="text-amber-300">"MySQL"</span></div>
-                                <div class="ml-4"><span class="text-stone-400">],</span></div>
-                                <div class="ml-4"><span class="text-green-400">coffee</span><span
-                                        class="text-stone-400">:</span> <span class="text-orange-400">Infinity</span><span
-                                        class="text-stone-400">,</span></div>
-                                <div class="ml-4"><span class="text-green-400">available</span><span
-                                        class="text-stone-400">:</span> <span class="text-emerald-400">true</span></div>
-                                <div><span class="text-yellow-300">}</span></div>
+                                <div class="ml-4">
+                                    <span class="text-green-600 dark:text-green-400">role</span>
+                                    <span class="text-stone-500 dark:text-stone-400">:</span>
+                                    <span
+                                        class="text-amber-600 dark:text-amber-300">"{{ config('portfolio.owner_title', 'Full Stack Developer') }}"</span>
+                                    <span class="text-stone-500 dark:text-stone-400">,</span>
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-green-600 dark:text-green-400">passion</span>
+                                    <span class="text-stone-500 dark:text-stone-400">:</span>
+                                    <span class="text-amber-600 dark:text-amber-300">"Building great things"</span>
+                                    <span class="text-stone-500 dark:text-stone-400">,</span>
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-green-600 dark:text-green-400">skills</span>
+                                    <span class="text-stone-500 dark:text-stone-400">: [</span>
+                                </div>
+                                <div class="ml-8">
+                                    <span class="text-amber-600 dark:text-amber-300">"Laravel"</span><span
+                                        class="text-stone-500 dark:text-stone-400">,</span>
+                                    <span class="text-amber-600 dark:text-amber-300">"Vue.js"</span><span
+                                        class="text-stone-500 dark:text-stone-400">,</span>
+                                </div>
+                                <div class="ml-8">
+                                    <span class="text-amber-600 dark:text-amber-300">"TypeScript"</span><span
+                                        class="text-stone-500 dark:text-stone-400">,</span>
+                                    <span class="text-amber-600 dark:text-amber-300">"MySQL"</span>
+                                </div>
+                                <div class="ml-4"><span class="text-stone-500 dark:text-stone-400">],</span></div>
+                                <div class="ml-4">
+                                    <span class="text-green-600 dark:text-green-400">coffee</span>
+                                    <span class="text-stone-500 dark:text-stone-400">:</span>
+                                    <span class="text-orange-600 dark:text-orange-400">Infinity</span>
+                                    <span class="text-stone-500 dark:text-stone-400">,</span>
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-green-600 dark:text-green-400">available</span>
+                                    <span class="text-stone-500 dark:text-stone-400">:</span>
+                                    <span class="text-emerald-600 dark:text-emerald-400">true</span>
+                                </div>
+                                <div><span class="text-yellow-600 dark:text-yellow-300">}</span></div>
                             </div>
                         </div>
                     </div>
 
                     {{-- Floating badges --}}
                     <div
-                        class="absolute -top-3 -right-3 bg-white dark:bg-stone-800 rounded-xl px-3 py-1.5 shadow-lg border border-stone-200 dark:border-stone-700">
+                        class="absolute -top-3 -right-3 bg-white dark:bg-stone-800 rounded-xl px-3 py-1.5 shadow-lg border border-stone-200 dark:border-stone-700 transition-colors duration-300">
                         <span class="text-xs font-mono font-bold text-indigo-600 dark:text-indigo-400">// Open to
                             work</span>
                     </div>
                     <div
-                        class="absolute -bottom-3 -left-3 bg-white dark:bg-stone-800 rounded-xl px-3 py-1.5 shadow-lg border border-stone-200 dark:border-stone-700">
+                        class="absolute -bottom-3 -left-3 bg-white dark:bg-stone-800 rounded-xl px-3 py-1.5 shadow-lg border border-stone-200 dark:border-stone-700 transition-colors duration-300">
                         <span class="text-xs font-mono font-bold text-green-600 dark:text-green-400">✓ All tests
                             passing</span>
                     </div>
@@ -248,8 +275,9 @@
 
     {{-- CTA Section --}}
     <section class="py-20">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <div class="bg-gradient-to-br from-indigo-600 to-violet-600 rounded-3xl p-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 text-center">
+            <div
+                class="bg-gradient-to-br from-indigo-600 to-rose-600 rounded-3xl p-12 relative overflow-hidden bg-pattern-cta">
                 <div
                     class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl">
                 </div>
