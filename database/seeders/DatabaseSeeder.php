@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Project;
-use App\Models\Setting;
 use App\Models\Tag;
 use App\Models\Technology;
 use App\Models\User;
@@ -46,7 +45,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'PostgreSQL', 'category' => 'database', 'color' => '#336791', 'proficiency' => 75, 'is_featured' => false],
             ['name' => 'Docker', 'category' => 'devops', 'color' => '#2496ED', 'proficiency' => 70, 'is_featured' => true],
             ['name' => 'Git', 'category' => 'tool', 'color' => '#F05032', 'proficiency' => 90, 'is_featured' => true],
-            ['name' => 'Unity', 'category' => 'Game Engine', 'color' => '#222C37', 'proficiency' => 95, 'is_featured' => true],
+            ['name' => 'Unity', 'category' => 'tool', 'color' => '#222C37', 'proficiency' => 95, 'is_featured' => true],
         ];
 
         $technologies = [];
@@ -160,37 +159,6 @@ class DatabaseSeeder extends Seeder
                 array_merge($data, ['category_id' => $category?->id])
             );
             $post->tags()->sync($tags->take(3)->pluck('id'));
-        }
-
-        // Create default settings
-        $settingsData = [
-            'experiences' => json_encode([
-                [
-                    'role' => 'IT Consultant (Geographic Information System)',
-                    'company' => 'Dinas Pekerjaan Umum dan Penataan Ruang (PUPR)',
-                    'period' => '2013 — 2019',
-                    'description' => 'Bertanggung jawab dalam perancangan dan implementasi infrastruktur data spasial serta pengembangan sistem informasi geografis untuk mendukung efisiensi tata ruang daerah.',
-                    'technologies' => ['ArcGIS', 'QGIS', 'PostGIS', 'Web GIS', 'Spatial Analysis'],
-                ],
-                [
-                    'role' => 'Vocational Educator (Network Engineering)',
-                    'company' => 'Vocational High School (SMK)',
-                    'period' => '2019 — Present',
-                    'description' => 'Mendidik dan melatih talenta muda dalam kompetensi infrastruktur jaringan, administrasi server, dan keamanan siber sesuai dengan standar industri terkini.',
-                    'technologies' => ['MikroTik', 'Cisco CCNA', 'Linux Administration', 'Network Security', 'Virtualization'],
-                ],
-                [
-                    'role' => 'Senior Full Stack Web Developer (Freelance)',
-                    'company' => 'Self-Employed',
-                    'period' => '2013 — Present',
-                    'description' => 'Menyediakan solusi digital end-to-end bagi berbagai klien, mulai dari pengembangan arsitektur web yang skalabel hingga optimalisasi sistem manajemen basis data.',
-                    'technologies' => ['Laravel', 'Vue.js', 'RESTful API', 'MySQL', 'Cloud Hosting'],
-                ],
-            ]),
-        ];
-
-        foreach ($settingsData as $key => $value) {
-            Setting::set($key, $value, 'json', 'profile');
         }
 
         $this->command->info('✅ Database seeded successfully!');

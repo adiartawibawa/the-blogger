@@ -78,6 +78,26 @@
                                     </svg>
                                 </a>
                             @endif
+                            @if (config('portfolio.social.whatsapp'))
+                                <a href="{{ config('portfolio.social.whatsapp') }}" target="_blank"
+                                    class="text-stone-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 448 512">
+                                        <path
+                                            d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z" />
+                                    </svg>
+                                </a>
+                            @endif
+                            @if (config('portfolio.social.instagram'))
+                                <a href="{{ config('portfolio.social.instagram') }}" target="_blank"
+                                    class="text-stone-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                                        viewBox="0 0 448 512">
+                                        <path
+                                            d="M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                                    </svg>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -99,7 +119,7 @@
                         </div>
 
                         {{-- Code Content --}}
-                        <div class="p-6 font-mono text-sm transition-colors duration-300">
+                        <div class="p-8 pb-10 font-mono text-sm transition-colors duration-300">
                             <div class="space-y-1 leading-relaxed">
                                 <div>
                                     <span class="text-violet-600 dark:text-violet-400">const</span>
@@ -124,31 +144,71 @@
                                 <div class="ml-4">
                                     <span class="text-green-600 dark:text-green-400">passion</span>
                                     <span class="text-stone-500 dark:text-stone-400">:</span>
-                                    <span class="text-amber-600 dark:text-amber-300">"Building great things"</span>
+                                    <span
+                                        class="text-amber-600 dark:text-amber-300">"{{ config('portfolio.owner_passion', 'Building great things') }}"</span>
                                     <span class="text-stone-500 dark:text-stone-400">,</span>
                                 </div>
-                                <div class="ml-4">
+                                @php
+                                    $skills = config('portfolio.owner_skill', []);
+                                @endphp
+
+                                <div class="ml-4 wrap-break-word">
                                     <span class="text-green-600 dark:text-green-400">skills</span>
                                     <span class="text-stone-500 dark:text-stone-400">: [</span>
+
+
+                                    <div class="ml-8 space-y-1">
+                                        @foreach ($skills as $skill)
+                                            <span class="text-amber-600 dark:text-amber-300">"{{ $skill }}"</span>
+                                            @if (!$loop->last)
+                                                <span class="text-stone-500 dark:text-stone-400">, </span>
+                                            @endif
+                                        @endforeach
+                                    </div>
+
+                                    <div class="ml-4">
+                                        <span class="text-stone-500 dark:text-stone-400">]</span>
+                                    </div>
                                 </div>
-                                <div class="ml-8">
-                                    <span class="text-amber-600 dark:text-amber-300">"Laravel"</span><span
-                                        class="text-stone-500 dark:text-stone-400">,</span>
-                                    <span class="text-amber-600 dark:text-amber-300">"Vue.js"</span><span
-                                        class="text-stone-500 dark:text-stone-400">,</span>
-                                </div>
-                                <div class="ml-8">
-                                    <span class="text-amber-600 dark:text-amber-300">"TypeScript"</span><span
-                                        class="text-stone-500 dark:text-stone-400">,</span>
-                                    <span class="text-amber-600 dark:text-amber-300">"MySQL"</span>
-                                </div>
-                                <div class="ml-4"><span class="text-stone-500 dark:text-stone-400">],</span></div>
+
                                 <div class="ml-4">
                                     <span class="text-green-600 dark:text-green-400">coffee</span>
                                     <span class="text-stone-500 dark:text-stone-400">:</span>
-                                    <span class="text-orange-600 dark:text-orange-400">Infinity</span>
+                                    <span
+                                        class="inline-flex gap-2 items-center justify-center text-amber-600 dark:text-amber-400">
+                                        Infinity
+                                        <i>
+                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 275.353 275.353"
+                                                xml:space="preserve"
+                                                class="text-orange-600 dark:text-orange-400 w-6 h-auto">
+                                                <g>
+                                                    <g>
+                                                        <g>
+                                                            <g>
+                                                                <path fill="currentColor"
+                                                                    d="M229.784,199.712c27.269,0,45.568-29.692,45.568-57.419c0-20.117-12.418-22.843-24.562-22.843
+                                                                                                                                                         c-3.468,0-7.21,0.234-11.167,0.479c-3.195,0.176-6.507,0.332-9.848,0.41l0.039-0.889H1.514c0,42.959,24.132,80.321,59.686,99.49
+                                                                                                                                                         C24.787,221.333,0,226.043,0,231.445c0,7.865,51.782,14.196,115.659,14.196s115.649-6.331,115.649-14.196
+                                                                                                                                                         c0-5.432-24.904-10.132-61.454-12.516c10.63-5.725,20.263-13.004,28.529-21.641
+                                                                                                                                                         C208.026,199.712,219.448,199.712,229.784,199.712z M229.364,128.272c3.683-0.088,7.289-0.244,10.737-0.469
+                                                                                                                                                         c3.83-0.205,7.464-0.42,10.698-0.42c11.509,0,16.658,2.159,16.658,14.909c0,23.419-15.466,49.515-37.664,49.515
+                                                                                                                                                         c-9.751,0-18.3-0.205-25.285-1.358C218.559,173.196,227.537,151.731,229.364,128.272z M98.982,97.203
+                                                                                                                                                         c-0.557-0.547-13.414-13.922,0.156-30.327c16.58-20,0.01-37-0.156-37.166l-3.595,3.595c0.557,0.537,13.414,13.932-0.166,30.327
+                                                                                                                                                         c-16.58,20.029-0.01,37.039,0.166,37.195L98.982,97.203z M118.737,97.203c-0.557-0.547-13.414-13.922,0.166-30.327
+                                                                                                                                                         c16.56-20,0-37-0.166-37.166l-3.605,3.595c0.557,0.537,13.414,13.932-0.156,30.327c-16.56,20.039-0.01,37.039,0.166,37.205
+                                                                                                                                                         L118.737,97.203z M140.251,97.203c-0.557-0.547-13.414-13.922,0.156-30.327c16.57-20,0-37-0.156-37.166l-3.615,3.595
+                                                                                                                                                         c0.547,0.537,13.424,13.932-0.166,30.327c-16.56,20.039,0,37.039,0.176,37.205L140.251,97.203z" />
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </i>
+                                    </span>
                                     <span class="text-stone-500 dark:text-stone-400">,</span>
                                 </div>
+
                                 <div class="ml-4">
                                     <span class="text-green-600 dark:text-green-400">available</span>
                                     <span class="text-stone-500 dark:text-stone-400">:</span>

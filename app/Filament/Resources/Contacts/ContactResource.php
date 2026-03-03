@@ -35,7 +35,7 @@ class ContactResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Manajemen';
+    protected static string|UnitEnum|null $navigationGroup = 'Management';
 
     protected static ?int $navigationSort = 3;
 

@@ -106,6 +106,106 @@
             </div>
         @endif
 
+        {{-- Certifications --}}
+        @if (!empty($certifications))
+            <section class="mb-20">
+                {{-- Header --}}
+                <div class="mb-8">
+                    <span class="font-mono text-xs uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+                        Validation
+                    </span>
+                    <h2 class="mt-1 text-3xl font-display font-bold text-stone-900 dark:text-stone-100">
+                        Certifications
+                    </h2>
+                </div>
+
+                {{-- Grid --}}
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    @foreach ($certifications as $cert)
+                        @php
+                            $title = $cert['title'] ?? null;
+                            $issuer = $cert['issuer'] ?? null;
+                            $description = $cert['description'] ?? null;
+                            $badgeCode = $cert['badge_code'] ?? null;
+                            $badgeUrl = $cert['badge_url'] ?? null;
+                            $issuingDate = $cert['issuing_date'] ?? null;
+                            $expirationDate = $cert['expiration_date'] ?? null;
+                            $skills = $cert['skills'] ?? [];
+                        @endphp
+
+                        <article
+                            class="flex flex-col p-6 bg-white border rounded-2xl border-stone-200 dark:bg-stone-800/60 dark:border-stone-700">
+
+                            {{-- Content Section (Badge Left, Info Right) --}}
+                            <div class="flex flex-row items-start gap-6 mb-auto">
+                                {{-- Badge Column: Berikan lebar pasti agar tidak bertumpuk --}}
+                                <div class="flex-shrink-0 w-32 sm:w-36" wire:ignore>
+                                    @if ($badgeCode)
+                                        <div class="credly-badge-wrapper">
+                                            {!! $badgeCode !!}
+                                        </div>
+                                    @elseif ($badgeUrl)
+                                        <img src="{{ asset('storage/' . $badgeUrl) }}" alt="{{ $title }}"
+                                            class="w-full h-auto rounded-lg object-contain">
+                                    @endif
+                                </div>
+
+                                {{-- Info Column: Tambahkan pl-2 sebagai padding ekstra jika perlu --}}
+                                <div class="flex-1 min-w-0 pt-1">
+                                    @if ($title)
+                                        <h3 class="font-bold leading-tight text-stone-900 dark:text-stone-100 text-lg">
+                                            {{ $title }}
+                                        </h3>
+                                    @endif
+
+                                    @if ($issuer)
+                                        <p class="mt-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                                            {{ $issuer }}
+                                        </p>
+                                    @endif
+
+                                    @if ($description)
+                                        <p class="mt-4 text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+                                            {{ $description }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            {{-- Footer Section --}}
+                            <div class="pt-4 mt-2 space-y-3 border-t border-stone-100 dark:border-stone-700/50">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-mono text-[10px] uppercase tracking-wider text-stone-400">
+                                        Skills
+                                    </span>
+                                    <span class="font-mono text-xs text-stone-500 dark:text-stone-400">
+                                        Date issued: {{ $issuingDate }}
+                                        @if ($expirationDate)
+                                            — Expires: {{ $expirationDate }}
+                                        @else
+                                            (No Expiry)
+                                        @endif
+                                    </span>
+                                </div>
+
+                                @if (!empty($skills))
+                                    <div class="flex flex-wrap gap-1.5">
+                                        @foreach ($skills as $skill)
+                                            <span
+                                                class="px-2 py-0.5 text-[10px] italic font-medium rounded bg-stone-100 text-stone-600 dark:bg-stone-700 dark:text-stone-300">
+                                                #{{ $skill }}
+                                            </span>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+
+                        </article>
+                    @endforeach
+                </div>
+            </section>
+        @endif
+
         {{-- Experience --}}
         @if (!empty($experiences))
             <div>

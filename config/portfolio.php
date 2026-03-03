@@ -8,7 +8,14 @@ return [
     */
     'owner_name' => env('PORTFOLIO_OWNER_NAME', 'Your Name'),
     'owner_title' => env('PORTFOLIO_OWNER_TITLE', 'Full Stack Developer'),
+    'owner_passion' => env('PORTFOLIO_OWNER_PASSION', 'Building great things'),
     'owner_bio' => env('PORTFOLIO_OWNER_BIO', 'Passionate developer building amazing web experiences with clean code and creative solutions.'),
+    'owner_skill' => array_filter(
+        array_map(
+            'trim',
+            explode(',', env('PORTFOLIO_OWNER_SKILL', 'PHP,Laravel,Vue.js,Vanilla.js,C#,MySQL'))
+        )
+    ),
     'owner_avatar' => env('PORTFOLIO_OWNER_AVATAR', null),
 
     /*
@@ -21,6 +28,8 @@ return [
         'linkedin' => env('SOCIAL_LINKEDIN', ''),
         'twitter' => env('SOCIAL_TWITTER', ''),
         'email' => env('SOCIAL_EMAIL', ''),
+        'whatsapp' => env('SOCIAL_WHATSAPP', ''),
+        'instagram' => env('SOCIAL_INSTAGRAM', ''),
     ],
 
     /*

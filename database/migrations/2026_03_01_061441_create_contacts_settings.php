@@ -22,15 +22,6 @@ return new class extends Migration
             $table->string('ip_address', 45)->nullable();
             $table->timestamps();
         });
-
-        Schema::create('settings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('key')->unique();
-            $table->longText('value')->nullable();
-            $table->string('type')->default('text'); // text, json, boolean, image
-            $table->string('group')->default('general');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -38,7 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
         Schema::dropIfExists('contacts');
     }
 };
