@@ -66,9 +66,11 @@ class PostForm
                                 Select::make('content_format')
                                     ->options(['markdown' => 'Markdown', 'html' => 'HTML'])
                                     ->default('markdown')
+                                    ->live()
                                     ->required(),
 
                                 MarkdownEditor::make('content')
+                                    ->label('Content (Markdown)')
                                     ->required()
                                     ->columnSpanFull()
                                     ->visible(fn($get) => $get('content_format') === 'markdown')
@@ -88,10 +90,24 @@ class PostForm
                                         'undo',
                                     ]),
 
-                                RichEditor::make('content')
+                                RichEditor::make('html_content')
+                                    ->label('Content (Visual HTML)')
                                     ->required()
                                     ->columnSpanFull()
-                                    ->visible(fn($get) => $get('content_format') === 'html'),
+                                    ->visible(fn($get) => $get('content_format') === 'html')
+                                    ->dehydrated(false)
+                                    ->afterStateHydrated(function ($set, $get, $record) {
+                                        if ($get('content_format') === 'html' && $record) {
+                                            $set('html_content', $record->content);
+                                        }
+                                    })
+                                    ->afterStateUpdated(function ($state, $set) {
+                                        $set('content', $state);
+                                    }),
+
+                                TextInput::make('content')
+                                    ->hidden()
+                                    ->dehydrated(true),
                             ]),
 
                         Tab::make('Media & Status')
@@ -99,10 +115,7 @@ class PostForm
                                 FileUpload::make('cover_image')
                                     ->image()
                                     ->directory('blog/covers')
-                                    ->imageResizeMode('cover')
-                                    ->imageCropAspectRatio('16:9')
-                                    ->imageResizeTargetWidth('1200')
-                                    ->imageResizeTargetHeight('630')
+                                    ->imageEditor()
                                     ->maxSize(2048),
 
                                 Grid::make(2)->schema([

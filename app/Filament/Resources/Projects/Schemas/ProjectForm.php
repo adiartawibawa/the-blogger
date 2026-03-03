@@ -104,11 +104,10 @@ class ProjectForm
                                 FileUpload::make('thumbnail')
                                     ->image()
                                     ->directory('projects/thumbnails')
-                                    ->imageResizeMode('cover')
-                                    ->imageCropAspectRatio('16:9')
-                                    ->imageResizeTargetWidth('1200')
-                                    ->imageResizeTargetHeight('675')
+                                    ->imageEditor()
                                     ->maxSize(2048),
+
+                                // ProjectForm.php
 
                                 Repeater::make('images')
                                     ->relationship()
@@ -124,7 +123,8 @@ class ProjectForm
 
                                         TextInput::make('caption'),
 
-                                        Hidden::make('sort_order'),
+                                        Hidden::make('sort_order')
+                                            ->default(0),
                                     ])
                                     ->reorderable('sort_order')
                                     ->columnSpanFull(),

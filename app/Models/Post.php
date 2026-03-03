@@ -40,30 +40,6 @@ class Post extends Model
         ];
     }
 
-    protected static function booted(): void
-    {
-        static::creating(function (Post $post) {
-            if (empty($post->slug)) {
-                $post->slug = Str::slug($post->title);
-            }
-            // Calculate read time
-            $wordCount = str_word_count(strip_tags($post->content));
-            $post->read_time = max(1, (int) ceil($wordCount / 200));
-
-            // Auto-generate excerpt if empty
-            if (empty($post->excerpt)) {
-                $post->excerpt = Str::limit(strip_tags($post->content), 200);
-            }
-        });
-
-        static::updating(function (Post $post) {
-            if ($post->isDirty('content')) {
-                $wordCount = str_word_count(strip_tags($post->content));
-                $post->read_time = max(1, (int) ceil($wordCount / 200));
-            }
-        });
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -150,5 +126,45 @@ class Post extends Model
             return $converter->convert($this->content)->getContent();
         }
         return $this->content;
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function (Post $post) {
+            if (empty($post->slug)) {
+                $post->slug = Str::slug($post->title);
+            }
+
+            // Gunakan fungsi helper internal untuk konsistensi
+            $post->read_time = static::calculateReadTime($post->content);
+
+            if (empty($post->excerpt)) {
+                $post->excerpt = Str::limit(strip_tags($post->content), 200);
+            }
+        });
+
+        static::updating(function (Post $post) {
+            if ($post->isDirty('content')) {
+                $post->read_time = static::calculateReadTime($post->content);
+            }
+        });
+    }
+
+    /**
+     * Fungsi kalkulasi waktu baca yang lebih akurat
+     */
+    protected static function calculateReadTime(?string $content): int
+    {
+        if (empty($content)) {
+            return 1;
+        }
+        // Bersihkan tag HTML jika ada
+        $cleanContent = strip_tags($content);
+        // Hapus karakter Markdown yang sering muncul agar tidak mengganggu hitungan
+        $cleanContent = preg_replace('/[#*`>_-]/', '', $cleanContent);
+        // Hitung kata menggunakan regex (lebih akurat daripada str_word_count)
+        $wordCount = count(preg_split('/\s+/u', $cleanContent, -1, PREG_SPLIT_NO_EMPTY));
+        // Standar rata-rata baca: 200 kata per menit
+        return (int) max(1, ceil($wordCount / 200));
     }
 }

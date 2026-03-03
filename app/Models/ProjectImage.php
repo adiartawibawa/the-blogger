@@ -34,4 +34,13 @@ class ProjectImage extends Model
     {
         return asset('storage/' . $this->path);
     }
+
+    protected static function booted(): void
+    {
+        static::creating(function (ProjectImage $image) {
+            if (is_null($image->sort_order)) {
+                $image->sort_order = 0;
+            }
+        });
+    }
 }
