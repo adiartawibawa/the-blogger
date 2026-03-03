@@ -1,4 +1,4 @@
-<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>'; ?>
+{!! '<' . '?' . 'xml version="1.0" encoding="UTF-8" ' . '?' . '>' !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {{-- Static pages --}}
     <url>
@@ -31,7 +31,7 @@
     @foreach (\App\Models\Project::published()->get() as $project)
         <url>
             <loc>{{ route('projects.show', $project->slug) }}</loc>
-            <lastmod>{{ $project->updated_at->toDateString() }}</lastmod>
+            <lastmod>{{ $project->updated_at->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.7</priority>
         </url>
@@ -41,7 +41,7 @@
     @foreach (\App\Models\Post::published()->get() as $post)
         <url>
             <loc>{{ route('blog.show', $post->slug) }}</loc>
-            <lastmod>{{ $post->updated_at->toDateString() }}</lastmod>
+            <lastmod>{{ $post->updated_at->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.8</priority>
         </url>

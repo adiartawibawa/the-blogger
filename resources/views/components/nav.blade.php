@@ -36,8 +36,8 @@
                 {{-- Right Actions --}}
                 <div class="flex items-center gap-2">
                     {{-- Dark Mode Toggle --}}
-                    <button @click="darkMode = !darkMode"
-                        class="w-9 h-9 flex items-center justify-center rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                    <button @click="toggleDarkMode()"
+                        class="w-9 h-9 flex items-center cursor-pointer justify-center rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
                         aria-label="Toggle dark mode">
                         <svg x-show="!darkMode" class="w-4 h-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">

@@ -35,3 +35,6 @@ Route::get('/sitemap.xml', function () {
         'Content-Type' => 'application/xml',
     ]);
 })->name('sitemap');
+
+Route::view('/privacy-policy', 'pages.legal.privacy')->name('privacy');
+Route::view('/terms-of-service', 'pages.legal.terms')->name('terms');

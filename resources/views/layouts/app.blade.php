@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<script>
-    if (localStorage.getItem('darkMode') === 'true' ||
-        (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-</script>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" x-data="{
     darkMode: localStorage.getItem('darkMode') === 'true',
     toggleDarkMode() {
         this.darkMode = !this.darkMode;
         localStorage.setItem('darkMode', this.darkMode);
+        this.updateTheme();
+    },
+    updateTheme() {
         if (this.darkMode) {
             document.documentElement.classList.add('dark');
         } else {
@@ -19,7 +14,7 @@
         }
     }
 }"
-    :class="{ 'dark': darkMode }">
+    x-init="updateTheme()">
 
 <head>
     <meta charset="utf-8">
@@ -30,6 +25,7 @@
     <title>@yield('title', config('app.name', 'Dev Portfolio'))</title>
     <meta name="description" content="@yield('description', 'Professional Developer Portfolio & Blog')">
     <meta name="keywords" content="@yield('keywords', 'developer, portfolio, blog, web development')">
+    @stack('meta')
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Open Graph --}}
@@ -51,6 +47,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
+
+
+    <script>
+        (function() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
 
     {{-- Styles --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])

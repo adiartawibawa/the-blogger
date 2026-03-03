@@ -1,6 +1,8 @@
 <?php
 
+use App\Settings\CertificationSettings;
 use App\Settings\ExperienceSetting;
+use App\Settings\ExperienceSettings;
 
 return [
 
@@ -9,7 +11,8 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-        ExperienceSetting::class,
+        ExperienceSettings::class,
+        CertificationSettings::class,
     ],
 
     /*
