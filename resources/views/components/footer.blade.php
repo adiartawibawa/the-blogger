@@ -99,12 +99,12 @@
 
         {{-- Bottom Bar --}}
         <div
-            class="border-t border-stone-200 dark:border-stone-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="text-stone-400 dark:text-stone-500 text-[11px] font-mono tracking-tighter uppercase">
+            class="border-t border-stone-200 dark:border-stone-800 pt-6 flex flex-row md:flex-row items-center justify-between gap-4">
+            <p class="text-stone-400 dark:text-stone-500 text-xs tracking-tighter font-mono">
                 &copy; {{ date('Y') }} {{ config('portfolio.owner_name', 'DevPortfolio') }}. All rights reserved.
             </p>
             <div
-                class="flex items-center gap-1.5 text-stone-400 dark:text-stone-500 text-[11px] font-mono uppercase tracking-tighter">
+                class="flex items-center gap-1.5 text-stone-400 dark:text-stone-500 text-xs tracking-tighter font-mono">
                 <span>Built with</span>
                 <span class="text-red-500/80 animate-pulse text-xs">♥</span>
                 <span>Laravel & Tailwind</span>
